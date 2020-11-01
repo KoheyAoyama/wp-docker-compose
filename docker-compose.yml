@@ -31,12 +31,12 @@ services:
     volumes:
       - ./public:/var/www/html
 
-  wpcli:
-    image: wordpress:cli-2.3.0-php7.1
-    volumes:
-      - ./public:/var/www/html
-    working_dir: /var/www/html
-    container_name: "${PROJECT_NAME}_wpcli"
+#  wpcli:
+#    image: wordpress:cli-2.3.0-php7.1
+#    volumes:
+#      - ./public:/var/www/html
+#    working_dir: /var/www/html
+#    container_name: "${PROJECT_NAME}_wpcli"
 
   wordmove:
     tty: true
