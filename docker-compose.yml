@@ -7,6 +7,8 @@ services:
       - "${LOCAL_DB_PORT}:3306"
     volumes:
       - db_data:/var/lib/mysql
+    networks:
+      - wp-net
     restart: always
     container_name: "${PROJECT_NAME}_db"
     environment:
@@ -30,11 +32,15 @@ services:
       WORDPRESS_DB_NAME: wordpress
     volumes:
       - ./public:/var/www/html
+    networks:
+      - wp-net
 
   wpcli:
     image: wordpress:cli-2.3.0-php7.1
     volumes:
       - ./public:/var/www/html
+    networks:
+      - wp-net
     working_dir: /var/www/html
     container_name: "${PROJECT_NAME}_wpcli"
 
@@ -49,6 +55,8 @@ services:
       - ./config:/home/
       - ./public:/var/www/html
       - ~/.ssh:/home/.ssh
+    networks:
+      - wp-net
     environment:
       LOCAL_SERVER_PORT: "${LOCAL_SERVER_PORT}"
       PRODUCTION_URL: "${PRODUCTION_URL}"
@@ -64,4 +72,7 @@ services:
 
 volumes:
   db_data: {}
+
+networks:
+  wp-net:
 
