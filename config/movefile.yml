@@ -8,7 +8,7 @@ local:
     name: "wordpress"
     user: "root"
     password: "wordpress"
-    host: "database"
+    host: "db"
 
 production:
   vhost: "<%= ENV['PRODUCTION_URL'] %>"
